@@ -7,7 +7,7 @@ public enum CheckType
     InsertAndSelect, // run insert and select
 }
 
-public enum Dificulty
+public enum Difficulty
 {
     Easy,
     Normal,
@@ -25,7 +25,7 @@ public class Exercise
     public Guid UnitId { get; set; }
     public Unit Unit { get; set; }
 
-    public Dificulty Dificulty { get; set; } = Dificulty.Normal;
+    public Difficulty Difficulty { get; set; } = Difficulty.Normal;
     
     public string Schema { get; set; } = string.Empty;
     public CheckType CheckType { get; set; } = CheckType.Compare;
