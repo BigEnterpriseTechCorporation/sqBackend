@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y9WTkDi74BM=",
+  "dgSpecHash": "Anwddsj09co=",
   "success": true,
-  "projectFilePath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/Infrastructure/Infrastructure.csproj",
+  "projectFilePath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
     "/Users/vladisavgulevitc/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/vladisavgulevitc/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

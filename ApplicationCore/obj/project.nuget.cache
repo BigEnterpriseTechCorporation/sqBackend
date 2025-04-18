@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tm0QVI6P6Q8=",
+  "dgSpecHash": "sLKBaKz0K3E=",
   "success": true,
-  "projectFilePath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/ApplicationCore/ApplicationCore.csproj",
+  "projectFilePath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/ApplicationCore/ApplicationCore.csproj",
   "expectedPackageFiles": [
     "/Users/vladisavgulevitc/.nuget/packages/fluentvalidation/11.11.0/fluentvalidation.11.11.0.nupkg.sha512",
     "/Users/vladisavgulevitc/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yeoOuCAwYBs=",
+  "dgSpecHash": "V/qt8nmsVI4=",
   "success": true,
-  "projectFilePath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/WebApi/WebApi.csproj",
+  "projectFilePath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/WebApi/WebApi.csproj",
   "expectedPackageFiles": [
     "/Users/vladisavgulevitc/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/vladisavgulevitc/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

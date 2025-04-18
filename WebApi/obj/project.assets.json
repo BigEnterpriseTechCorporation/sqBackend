@@ -7169,11 +7169,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/WebApi/WebApi.csproj",
+      "projectUniqueName": "/Users/vladisavgulevitc/RiderProjects/sqBackend/WebApi/WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/WebApi/WebApi.csproj",
+      "projectPath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/WebApi/WebApi.csproj",
       "packagesPath": "/Users/vladisavgulevitc/.nuget/packages/",
-      "outputPath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/WebApi/obj/",
+      "outputPath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/WebApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/vladisavgulevitc/.nuget/NuGet/NuGet.Config"
@@ -7188,8 +7188,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/Infrastructure/Infrastructure.csproj": {
-              "projectPath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/Infrastructure/Infrastructure.csproj"
+            "/Users/vladisavgulevitc/RiderProjects/sqBackend/Infrastructure/Infrastructure.csproj": {
+              "projectPath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/Infrastructure/Infrastructure.csproj"
             }
           }
         }

@@ -2092,11 +2092,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/ApplicationCore/ApplicationCore.csproj",
+      "projectUniqueName": "/Users/vladisavgulevitc/RiderProjects/sqBackend/ApplicationCore/ApplicationCore.csproj",
       "projectName": "ApplicationCore",
-      "projectPath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/ApplicationCore/ApplicationCore.csproj",
+      "projectPath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/ApplicationCore/ApplicationCore.csproj",
       "packagesPath": "/Users/vladisavgulevitc/.nuget/packages/",
-      "outputPath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/ApplicationCore/obj/",
+      "outputPath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/ApplicationCore/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/vladisavgulevitc/.nuget/NuGet/NuGet.Config"

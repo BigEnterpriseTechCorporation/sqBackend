@@ -3709,11 +3709,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/Infrastructure/Infrastructure.csproj",
+      "projectUniqueName": "/Users/vladisavgulevitc/RiderProjects/sqBackend/Infrastructure/Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/Infrastructure/Infrastructure.csproj",
+      "projectPath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/Infrastructure/Infrastructure.csproj",
       "packagesPath": "/Users/vladisavgulevitc/.nuget/packages/",
-      "outputPath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/Infrastructure/obj/",
+      "outputPath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/vladisavgulevitc/.nuget/NuGet/NuGet.Config"
@@ -3728,8 +3728,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/ApplicationCore/ApplicationCore.csproj": {
-              "projectPath": "/Users/vladisavgulevitc/Desktop/code/AbstractBackend/ApplicationCore/ApplicationCore.csproj"
+            "/Users/vladisavgulevitc/RiderProjects/sqBackend/ApplicationCore/ApplicationCore.csproj": {
+              "projectPath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/ApplicationCore/ApplicationCore.csproj"
             }
           }
         }
