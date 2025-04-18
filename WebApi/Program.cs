@@ -103,7 +103,20 @@ void ConfigureServices(IServiceCollection s)
     s.AddEndpointsApiExplorer();
     s.AddSwaggerGen(c =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { 
+            Title = "SQL Learning API", 
+            Version = "v1",
+            Description = "API for SQL Learning platform with different exercise types",
+            Contact = new OpenApiContact
+            {
+                Name = "SQL Learning Team"
+            }
+        });
+
+        // Include XML comments
+        var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        c.IncludeXmlComments(xmlPath);
 
         // Security configuration
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -113,6 +126,7 @@ void ConfigureServices(IServiceCollection s)
             BearerFormat = "JWT",
             Description = "JWT Authorization header using the Bearer scheme."
         });
+        
         if(isProd) c.AddServer(new OpenApiServer { Url = "/api/v1/" });
         else c.AddServer(new OpenApiServer { Url = "/" });
 

@@ -605,3 +605,5 @@
 /Users/vladisavgulevitc/RiderProjects/sqBackend/WebApi/obj/Debug/net9.0/WebApi.pdb
 /Users/vladisavgulevitc/RiderProjects/sqBackend/WebApi/obj/Debug/net9.0/WebApi.genruntimeconfig.cache
 /Users/vladisavgulevitc/RiderProjects/sqBackend/WebApi/obj/Debug/net9.0/ref/WebApi.dll
+/Users/vladisavgulevitc/RiderProjects/sqBackend/WebApi/bin/Debug/net9.0/WebApi.xml
+/Users/vladisavgulevitc/RiderProjects/sqBackend/WebApi/obj/Debug/net9.0/WebApi.xml

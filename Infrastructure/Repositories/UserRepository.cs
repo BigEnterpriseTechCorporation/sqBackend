@@ -42,7 +42,8 @@ public class UserRepository(AppDbContext context) : IUserRepository
         var user = await GetByIdAsync(id);
         if (user != null)
         {
-            _context.Users.Remove(user);
+            user.IsActive = false;
+            _context.Users.Update(user);
             await _context.SaveChangesAsync();
         }
     }

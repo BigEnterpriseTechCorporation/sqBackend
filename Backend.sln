@@ -5,6 +5,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F230D6E-8DC4-4948-97AB-DC15E86C4F71}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
+		docs\api_documentation.md = docs\api_documentation.md
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{514B41A4-6647-4CB5-8EF0-CD4610A1AF24}"

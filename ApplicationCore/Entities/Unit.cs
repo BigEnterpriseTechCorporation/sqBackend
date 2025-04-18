@@ -10,5 +10,8 @@ public class Unit
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     
-    public List<Exercise> Exercises { get; set; } = [];
+    public Guid OwnerId { get; set; }
+    public User Owner { get; set; }
+    
+    public List<Exercise>? Exercises { get; set; } = [];
 }

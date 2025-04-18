@@ -15,6 +15,8 @@ public class User : IdentityUser<Guid>
     [Required]
     [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Логин должен содержать только латинские буквы.")]
     public override string UserName { get; set; } = string.Empty;
-    
     public string Role { get; set; } = "Member";
+    
+    
+    public List<Unit> Units { get; set; } = new List<Unit>();
 }

@@ -23,9 +23,14 @@ public static class ServiceExtensions
         
         // Repositories
         services.AddScoped<IUserRepository, UserRepository>();
-        //services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IUnitRepository, UnitRepository>();
+        services.AddScoped<IExerciseRepository, ExerciseRepository>();
+        
+        // Services
         services.AddTransient<IUserService, UserService>();
         services.AddTransient<ITokenService, TokenService>();
+        services.AddTransient<IUnitService, UnitService>();
+        services.AddTransient<IExerciseService, ExerciseService>();
         
         // External services
         //services.AddScoped<IEmailService, SendGridEmailService>();
