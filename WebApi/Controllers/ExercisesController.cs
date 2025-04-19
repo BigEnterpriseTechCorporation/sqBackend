@@ -12,7 +12,7 @@ namespace WebApi.Controllers;
 /// API endpoints for managing exercises
 /// </summary>
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class ExercisesController : ControllerBase
 {
     private readonly IExerciseService _exerciseService;

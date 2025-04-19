@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Anwddsj09co=",
+  "dgSpecHash": "rVpcIA8pX2Y=",
   "success": true,
   "projectFilePath": "/Users/vladisavgulevitc/RiderProjects/sqBackend/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -64,6 +64,7 @@
     "/Users/vladisavgulevitc/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "/Users/vladisavgulevitc/.nuget/packages/npgsql/9.0.3/npgsql.9.0.3.nupkg.sha512",
     "/Users/vladisavgulevitc/.nuget/packages/npgsql.entityframeworkcore.postgresql/9.0.4/npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
+    "/Users/vladisavgulevitc/.nuget/packages/serilog/4.2.0/serilog.4.2.0.nupkg.sha512",
     "/Users/vladisavgulevitc/.nuget/packages/system.buffers/4.6.0/system.buffers.4.6.0.nupkg.sha512",
     "/Users/vladisavgulevitc/.nuget/packages/system.clientmodel/1.0.0/system.clientmodel.1.0.0.nupkg.sha512",
     "/Users/vladisavgulevitc/.nuget/packages/system.configuration.configurationmanager/6.0.1/system.configuration.configurationmanager.6.0.1.nupkg.sha512",

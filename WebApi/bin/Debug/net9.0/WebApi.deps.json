@@ -1567,6 +1567,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.3",
           "Npgsql": "9.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
+          "Serilog": "4.2.0",
           "System.IdentityModel.Tokens.Jwt": "8.0.1"
         },
         "runtime": {

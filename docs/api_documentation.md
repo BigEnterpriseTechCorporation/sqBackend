@@ -585,6 +585,59 @@ Returns the currently authenticated user's information. Requires authentication.
 }
 ```
 
+#### Update User Profile
+
+```
+PUT /Account/profile
+```
+
+Updates the currently authenticated user's profile information. Requires authentication.
+
+**Request Body**
+- Content-Type: application/json
+
+```json
+{
+  "UserName": "johndoe2",
+  "FullName": "John D. Doe",
+  "CurrentPassword": "CurrentPassword123",
+  "NewPassword": "NewPassword123"
+}
+```
+
+> Note: All fields except `CurrentPassword` are optional, but at least one of `UserName`, `FullName`, or `NewPassword` must be provided.
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+If username or password were changed, a new token is returned:
+
+```json
+{
+  "user": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "userName": "johndoe2",
+    "fullName": "John D. Doe",
+    "email": "johndoe2@localhost",
+    "role": "User"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+If only full name was changed:
+
+```json
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "userName": "johndoe",
+  "fullName": "John D. Doe",
+  "email": "johndoe@localhost",
+  "role": "User"
+}
+```
+
 ## Resource: Users
 
 The Users resource provides endpoints for managing users in the system.

@@ -11,7 +11,7 @@ namespace WebApi.Controllers;
 /// API endpoints for managing units (collections of exercises)
 /// </summary>
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class UnitsController : ControllerBase
 {
     private readonly IUnitService _unitService;
