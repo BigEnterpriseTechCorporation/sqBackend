@@ -31,7 +31,7 @@ For detailed setup instructions, please refer to the [Installation Guide](docs/i
 1. Clone the repository:
 ```bash
 git clone https://github.com/BigEnterpriseTechCorporation/sqBackend.git
-cd sql-learning-platform
+cd sqBackend
 ```
 
 2. Set up the database:
