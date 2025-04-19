@@ -131,10 +131,10 @@ public class ExercisesController : ControllerBase
                 return BadRequest("Title is required");
             }
             
-            if (string.IsNullOrWhiteSpace(request.Schema))
+            /*if (string.IsNullOrWhiteSpace(request.Schema))
             {
                 return BadRequest("Schema is required");
-            }
+            }*/
             
             // Validate type-specific fields
             if ((request.Type == ExerciseType.SelectAnswer || request.Type == ExerciseType.FillMissingWords) 
@@ -233,10 +233,10 @@ public class ExercisesController : ControllerBase
                 return BadRequest("Title is required");
             }
             
-            if (string.IsNullOrWhiteSpace(request.Schema))
+            /*if (string.IsNullOrWhiteSpace(request.Schema))
             {
                 return BadRequest("Schema is required");
-            }
+            }*/
             
             // Validate type-specific fields
             if ((request.Type == ExerciseType.SelectAnswer || request.Type == ExerciseType.FillMissingWords) 
