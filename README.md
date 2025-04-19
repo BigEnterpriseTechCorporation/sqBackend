@@ -16,7 +16,7 @@ The SQL Learning Platform provides a structured learning environment for SQL beg
 
 ## Technology Stack
 
-- **Backend**: ASP.NET Core 6.0 Web API
+- **Backend**: ASP.NET Core 9.0.4 Web API
 - **Database**: PostgreSQL
 - **ORM**: Entity Framework Core
 - **Authentication**: JWT Bearer tokens
@@ -24,14 +24,12 @@ The SQL Learning Platform provides a structured learning environment for SQL beg
 
 ## Getting Started
 
-For detailed setup instructions, please refer to the [Installation Guide](docs/installation.md).
-
 ### Quick Start
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/sql-learning-platform.git
-cd sql-learning-platform
+git clone https://github.com/BigEnterpriseTechCorporation/sqBackend.git
+cd sqBackend
 ```
 
 2. Set up the database:
@@ -45,7 +43,7 @@ cd WebApi
 dotnet run
 ```
 
-4. Access the API at `https://localhost:5001` or `http://localhost:5000`
+4. Access the API at `https://localhost:8080`
 
 ## Documentation
 
