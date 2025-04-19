@@ -52,3 +52,13 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+
+WebApi/obj/
+WebApi/bin/
+
+Infrastructure/bin/
+Infrastructure/obj/
+ApplicationCore/bin/
+ApplicationCore/obj/
+
