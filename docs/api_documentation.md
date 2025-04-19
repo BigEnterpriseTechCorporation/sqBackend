@@ -706,4 +706,313 @@ Deletes a specific user. Requires admin authorization.
 - `id` (path, guid, required): The ID of the user to delete
 
 **Response**
-- Status: 204 No Content 
+- Status: 204 No Content
+
+## Resource: Admin
+
+The Admin resource provides endpoints for system administration tasks.
+
+### Endpoints
+
+#### Get All Users (Admin)
+
+```
+GET /api/admin/users
+```
+
+Returns a paginated list of all users with filtering options. Requires admin authorization.
+
+**Parameters**
+- `role` (query, string, optional): Filter users by role (e.g., "Admin", "Member")
+- `searchTerm` (query, string, optional): Search users by username or full name
+- `page` (query, integer, optional): Page number (1-based, default: 1)
+- `pageSize` (query, integer, optional): Page size (default: 20, max: 100)
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "items": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "userName": "johndoe",
+      "fullName": "John Doe",
+      "email": "johndoe@localhost",
+      "role": "Member",
+      "isActive": true,
+      "createdAt": "2023-06-15T10:00:00Z",
+      "updatedAt": "2023-06-16T15:30:00Z"
+    },
+    ...
+  ],
+  "page": 1,
+  "pageSize": 20,
+  "totalCount": 45,
+  "totalPages": 3,
+  "hasPreviousPage": false,
+  "hasNextPage": true
+}
+```
+
+#### Update User Role
+
+```
+PUT /api/admin/users/{id}/role
+```
+
+Updates a user's role. Requires admin authorization.
+
+**Parameters**
+- `id` (path, guid, required): The ID of the user to update
+
+**Request Body**
+- Content-Type: application/json
+
+```json
+{
+  "role": "Admin"
+}
+```
+
+**Response**
+- Status: 204 No Content
+
+#### Toggle User Active Status
+
+```
+PUT /api/admin/users/{id}/status
+```
+
+Activates or deactivates a user account. Requires admin authorization.
+
+**Parameters**
+- `id` (path, guid, required): The ID of the user to update
+
+**Request Body**
+- Content-Type: application/json
+
+```json
+{
+  "isActive": true
+}
+```
+
+**Response**
+- Status: 204 No Content
+
+#### Get All Units (Admin)
+
+```
+GET /api/admin/units
+```
+
+Returns a paginated list of all units with filtering options. Requires admin authorization.
+
+**Parameters**
+- `ownerId` (query, guid, optional): Filter units by owner ID
+- `searchTerm` (query, string, optional): Search units by title or description
+- `page` (query, integer, optional): Page number (1-based, default: 1)
+- `pageSize` (query, integer, optional): Page size (default: 20, max: 100)
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "items": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "createdAt": "2023-05-20T10:00:00Z",
+      "updatedAt": "2023-05-21T15:30:00Z",
+      "title": "SQL Basics",
+      "description": "Learn the basics of SQL",
+      "ownerId": "3fa85f64-5717-4562-b3fc-2c963f66afb7",
+      "ownerName": "John Doe",
+      "isActive": true,
+      "exerciseCount": 5
+    },
+    ...
+  ],
+  "page": 1,
+  "pageSize": 20,
+  "totalCount": 12,
+  "totalPages": 1,
+  "hasPreviousPage": false,
+  "hasNextPage": false
+}
+```
+
+#### Toggle Unit Active Status
+
+```
+PUT /api/admin/units/{id}/status
+```
+
+Activates or deactivates a unit. Requires admin authorization.
+
+**Parameters**
+- `id` (path, guid, required): The ID of the unit to update
+
+**Request Body**
+- Content-Type: application/json
+
+```json
+{
+  "isActive": true
+}
+```
+
+**Response**
+- Status: 204 No Content
+
+#### Delete Unit (Admin Override)
+
+```
+DELETE /api/admin/units/{id}
+```
+
+Deletes a unit, bypassing ownership restrictions. Requires admin authorization.
+
+**Parameters**
+- `id` (path, guid, required): The ID of the unit to delete
+
+**Response**
+- Status: 204 No Content
+
+#### Get All Exercises (Admin)
+
+```
+GET /api/admin/exercises
+```
+
+Returns a paginated list of all exercises with filtering options. Requires admin authorization.
+
+**Parameters**
+- `unitId` (query, guid, optional): Filter exercises by unit ID
+- `type` (query, string, optional): Filter by exercise type (e.g., "SimpleQuery", "SelectAnswer")
+- `difficulty` (query, string, optional): Filter by difficulty (e.g., "Easy", "Hard")
+- `searchTerm` (query, string, optional): Search exercises by title or description
+- `page` (query, integer, optional): Page number (1-based, default: 1)
+- `pageSize` (query, integer, optional): Page size (default: 20, max: 100)
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "items": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afc8",
+      "createdAt": "2023-05-20T11:00:00Z",
+      "updatedAt": "2023-05-21T16:30:00Z",
+      "unitId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "unitTitle": "SQL Basics",
+      "title": "Select all customers",
+      "description": "Write a query to select all customers",
+      "type": "SimpleQuery",
+      "difficulty": "Easy",
+      "isActive": true,
+      "schema": "CREATE TABLE Customers (ID int, Name varchar(255))",
+      "checkType": "Compare",
+      "checkQueryInsert": "",
+      "checkQuerySelect": "",
+      "options": "",
+      "queryParts": ""
+    },
+    ...
+  ],
+  "page": 1,
+  "pageSize": 20,
+  "totalCount": 68,
+  "totalPages": 4,
+  "hasPreviousPage": false,
+  "hasNextPage": true
+}
+```
+
+#### Toggle Exercise Active Status
+
+```
+PUT /api/admin/exercises/{id}/status
+```
+
+Activates or deactivates an exercise. Requires admin authorization.
+
+**Parameters**
+- `id` (path, guid, required): The ID of the exercise to update
+
+**Request Body**
+- Content-Type: application/json
+
+```json
+{
+  "isActive": true
+}
+```
+
+**Response**
+- Status: 204 No Content
+
+#### Delete Exercise (Admin Override)
+
+```
+DELETE /api/admin/exercises/{id}
+```
+
+Deletes an exercise, bypassing ownership restrictions. Requires admin authorization.
+
+**Parameters**
+- `id` (path, guid, required): The ID of the exercise to delete
+
+**Response**
+- Status: 204 No Content
+
+#### Get System Statistics
+
+```
+GET /api/admin/stats
+```
+
+Returns system-wide statistics. Requires admin authorization.
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "totalUsers": 45,
+  "activeUsers": 42,
+  "adminUsers": 3,
+  "usersByCreationDate": [
+    {
+      "date": "2023-06-01T00:00:00Z",
+      "count": 5
+    },
+    {
+      "date": "2023-06-02T00:00:00Z",
+      "count": 8
+    },
+    ...
+  ],
+  "totalUnits": 12,
+  "totalExercises": 68,
+  "exercisesByType": {
+    "SimpleQuery": 20,
+    "ComplexQuery": 15,
+    "SelectAnswer": 18,
+    "FillMissingWords": 10,
+    "ConstructQuery": 5
+  },
+  "exercisesByDifficulty": {
+    "Easy": 25,
+    "Normal": 20,
+    "Hard": 15,
+    "UltraHard": 8
+  }
+}
+``` 
