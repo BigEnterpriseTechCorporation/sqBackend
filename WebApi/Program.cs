@@ -179,7 +179,11 @@ void ConfigureServices(IServiceCollection s)
     //s.AddApplicationCore();
 
     s.AddInfrastructure(builder.Configuration);
-    s.AddControllers();
+    s.AddControllers()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        });
 }
 
 void ConfigureMiddleware(WebApplication app)

@@ -378,6 +378,7 @@ public class ExercisesController : ControllerBase
             CheckType = exercise.CheckType,
             CheckQueryInsert = exercise.CheckQueryInsert,
             CheckQuerySelect = exercise.CheckQuerySelect,
+            SolutionQuery = exercise.SolutionQuery,
             Options = exercise.Options,
             QueryParts = exercise.QueryParts
         };

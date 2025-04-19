@@ -70,6 +70,8 @@ Tokens can be obtained through the authentication endpoints described below.
 | DELETE | `/api/exercises/{id}` | Delete an exercise | Yes (Admin) |
 | GET | `/api/exercises/unit/{unitId}` | Get exercises for a unit | Yes |
 
+**Note**: Exercise responses include a `SolutionQuery` field in the ExerciseDto which contains the reference solution. Client applications should implement appropriate logic to determine when this solution should be displayed to users, typically after multiple failed attempts or after successful completion.
+
 ## Exercise Solutions API
 
 See [Exercise Solutions API](exercise_solutions_api.md) for detailed documentation.

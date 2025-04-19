@@ -18,6 +18,7 @@ public class ExerciseDto
     public CheckType CheckType { get; set; }
     public string CheckQueryInsert { get; set; } = string.Empty;
     public string CheckQuerySelect { get; set; } = string.Empty;
+    public string SolutionQuery { get; set; } = string.Empty;
     public string Options { get; set; } = string.Empty;
     public string QueryParts { get; set; } = string.Empty;
 }

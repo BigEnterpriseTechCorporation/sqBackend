@@ -75,6 +75,46 @@ POST /api/exercise-solutions/{exerciseId}
 | attemptNumber | integer | The number of attempts for this exercise |
 | errorDetails | string | Detailed error message (only when errors occur) |
 
+### Reference Solution Access
+
+The platform includes a mechanism to provide reference solutions to users, which is particularly useful for learning purposes. Reference solutions are stored in the `SolutionQuery` field of exercise entities and can be accessed via the Exercise API.
+
+#### Accessing Reference Solutions
+
+Reference solutions are included in the `ExerciseDto` returned by these endpoints:
+
+```
+GET /api/exercises/{id}
+GET /api/exercises
+```
+
+The `SolutionQuery` field contains the correct SQL query that solves the exercise. Client applications should implement appropriate logic to control the visibility of this solution based on the user's interaction with the exercise.
+
+#### Recommended Display Logic
+
+Frontend applications should consider the following guidelines for displaying reference solutions:
+
+1. **Hide Initially**: Do not show the solution when a user first accesses an exercise
+2. **Show After Multiple Attempts**: Make the solution available after a user has made several unsuccessful attempts
+3. **Show After Completion**: Always show the solution after a user has correctly solved the exercise
+4. **Explicit Request**: Provide a "Show Solution" button that users can click when they're stuck
+
+#### Example Client Implementation
+
+```javascript
+function shouldShowSolution(exercise, userAttempts, hasCompletedExercise) {
+  if (hasCompletedExercise) {
+    return true; // Always show solution after completion
+  }
+  
+  if (userAttempts >= 3) {
+    return true; // Show solution after 3 attempts
+  }
+  
+  return false; // Hide solution otherwise
+}
+```
+
 ### Get User Exercise Solutions
 
 Retrieve a user's solution history for a specific exercise.

@@ -16,6 +16,7 @@ The SQL solution checking system is designed to:
 2. Compare results against expected outputs
 3. Provide meaningful feedback on incorrect solutions
 4. Support different types of validation methods
+5. Make reference solutions available to users after multiple attempts
 
 ## Solution Checking Architecture
 
@@ -32,23 +33,62 @@ User SQL Query → Validation → Execution → Results Comparison → Feedback
 3. **Results Comparator**: Compares actual results with expected results
 4. **Feedback Generator**: Provides hints and error messages
 
+## Reference Solution Management
+
+Each exercise in the system has a reference solution stored in the `SolutionQuery` field. This SQL query represents the correct solution to the exercise and is used in the solution checking process.
+
+### Solution Storage
+
+The reference solution is stored in the Exercise entity and is:
+- Set when creating or updating an exercise
+- Accessible via the API for authorized users
+- Included in the ExerciseDto for client applications to display after multiple failed attempts
+
+### Solution Query Visibility
+
+The `SolutionQuery` field is included in the ExerciseDto returned by the API, which allows client applications to:
+
+1. Hide the solution until a user has attempted the exercise multiple times
+2. Show the solution when a user chooses to see it after failed attempts
+3. Display the solution after the exercise is completed for learning purposes
+
+Frontend applications should implement appropriate logic to control the visibility of the solution based on the user's progress and attempt count.
+
 ## Validation Methods
 
 The platform supports multiple validation methods, defined by the `CheckType` enum:
 
-### 1. Result Matching (CheckType.ResultMatch)
+### 1. String Comparison (Initial Check)
 
-Compares the result set of the user's query with the expected result set.
+Before applying more complex validation methods, the system first performs a simple string comparison between the user's query and the reference solution:
 
 ```csharp
-// Example implementation
-public bool ValidateResultMatch(string userQuery, string expectedQuery)
+// First try string comparison (fastest method)
+if (_sqlExecutionService.CheckByStringComparison(submittedQuery, exercise.SolutionQuery))
 {
-    var userResults = _queryExecutor.Execute(userQuery);
-    var expectedResults = _queryExecutor.Execute(expectedQuery);
-    
-    return _resultComparator.AreEqual(userResults, expectedResults);
+    return true;
 }
+```
+
+This string comparison is case-insensitive and normalizes both queries by:
+- Removing comments and extra whitespace
+- Converting to lowercase
+- Removing trailing semicolons
+- Normalizing whitespace
+
+This provides a quick first check that avoids the need for executing queries when there's an exact match.
+
+### 2. Result Matching (CheckType.Compare)
+
+If string comparison fails, the system compares the result set of the user's query with the result set of the reference solution:
+
+```csharp
+// Execute both queries and compare results
+return await _sqlExecutionService.CheckByExecutionAsync(
+    submittedQuery, 
+    exercise.SolutionQuery, 
+    exercise.Schema, 
+    exercise.CheckQueryInsert);
 ```
 
 Key considerations:
@@ -56,73 +96,38 @@ Key considerations:
 - Result sets must have the same number of rows and columns
 - Data types must match between results
 
-### 2. Query Structure (CheckType.QueryStructure)
+### 3. Select Validation (CheckType.Select)
 
-Analyzes the structure of the SQL query to ensure it meets requirements.
-
-```csharp
-// Example implementation
-public bool ValidateQueryStructure(string userQuery, ValidationCriteria criteria)
-{
-    var parser = new SqlQueryParser(userQuery);
-    
-    // Check for required clauses
-    bool hasRequiredClauses = criteria.RequiredClauses.All(clause => 
-        parser.HasClause(clause));
-        
-    // Check for required tables
-    bool usesRequiredTables = criteria.RequiredTables.All(table => 
-        parser.ReferencesTable(table));
-        
-    return hasRequiredClauses && usesRequiredTables;
-}
-```
-
-Validates:
-- Required SQL clauses (SELECT, JOIN, WHERE, etc.)
-- Required tables in the query
-- Specific SQL functions or operators
-
-### 3. Exact Match (CheckType.ExactMatch)
-
-Compares the user's query with the expected query (after normalization).
+This method validates the user's query against a predefined select query:
 
 ```csharp
-// Example implementation
-public bool ValidateExactMatch(string userQuery, string expectedQuery)
-{
-    var normalizedUserQuery = _sqlNormalizer.Normalize(userQuery);
-    var normalizedExpectedQuery = _sqlNormalizer.Normalize(expectedQuery);
-    
-    return normalizedUserQuery == normalizedExpectedQuery;
-}
+// Just execute the user's query and compare with solution output
+return await _sqlExecutionService.CheckByExecutionAsync(
+    submittedQuery, 
+    exercise.CheckQuerySelect, 
+    exercise.Schema);
 ```
 
-Normalization process:
-- Remove comments and extra whitespace
-- Standardize case for keywords
-- Reorder SELECT columns and WHERE conditions where order doesn't matter
+This is useful when:
+- The exercise requires specific results regardless of query structure
+- Multiple valid solutions might exist for the exercise
 
-### 4. Performance Check (CheckType.Performance)
+### 4. Insert and Select Validation (CheckType.InsertAndSelect)
 
-Evaluates the performance characteristics of the query.
+This method validates the user's INSERT query by executing it and then running a SELECT query to check the results:
 
 ```csharp
-// Example implementation
-public bool ValidatePerformance(string userQuery, PerformanceCriteria criteria)
-{
-    var stats = _queryExecutor.ExecuteWithStats(userQuery);
-    
-    return stats.ExecutionTime <= criteria.MaxExecutionTimeMs &&
-           stats.RowsExamined <= criteria.MaxRowsExamined;
-}
+// Execute user's insert query, then check with select
+return await _sqlExecutionService.CheckByExecutionAsync(
+    exercise.CheckQuerySelect, 
+    exercise.CheckQuerySelect, 
+    exercise.Schema, 
+    submittedQuery);
 ```
 
-Checks:
-- Query execution time
-- Number of rows examined
-- Presence of efficient indexes
-- Avoiding full table scans where inappropriate
+This is used for:
+- Exercises that require data modification
+- Testing INSERT, UPDATE, or DELETE operations
 
 ## Safe Execution Environment
 
