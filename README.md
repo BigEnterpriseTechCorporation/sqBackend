@@ -24,8 +24,6 @@ The SQL Learning Platform provides a structured learning environment for SQL beg
 
 ## Getting Started
 
-For detailed setup instructions, please refer to the [Installation Guide](docs/installation.md).
-
 ### Quick Start
 
 1. Clone the repository:
