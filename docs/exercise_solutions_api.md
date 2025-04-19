@@ -2,6 +2,13 @@
 
 This document details the API endpoints for submitting and managing SQL exercise solutions in the SQL Learning Platform.
 
+## Related Documentation
+
+- [API Overview](api_overview.md): High-level summary of all API endpoints
+- [Solution Checking Technical Guide](solution_checking_technical.md): Technical details on solution validation
+- [Developer Guide](developer_guide.md): General development guidelines
+- [User Guide](user_guide.md): End-user instructions for submitting solutions
+
 ## Solution Submission
 
 ### Submit Solution

@@ -10,7 +10,7 @@ namespace WebApi.Controllers;
 /// Controller for handling unit likes
 /// </summary>
 [ApiController]
-[Route("api/units/{unitId}/likes")]
+[Route("units/{unitId}/likes")]
 [Authorize]
 public class UnitLikesController : ControllerBase
 {

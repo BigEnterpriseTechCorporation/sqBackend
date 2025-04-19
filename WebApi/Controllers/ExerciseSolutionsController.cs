@@ -10,7 +10,7 @@ namespace WebApi.Controllers;
 /// Controller for handling exercise solutions
 /// </summary>
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
 [Authorize]
 public class ExerciseSolutionsController : ControllerBase
 {

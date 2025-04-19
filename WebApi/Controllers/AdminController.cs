@@ -13,7 +13,7 @@ namespace WebApi.Controllers;
 /// <summary>
 /// Admin controller for system management
 /// </summary>
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 [Authorize(Roles = "Admin")]
 public class AdminController : ControllerBase

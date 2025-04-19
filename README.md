@@ -49,9 +49,12 @@ dotnet run
 
 ## Documentation
 
+- [API Overview](docs/api_overview.md): High-level summary of all API endpoints
 - [API Documentation](docs/api_documentation.md): Detailed API endpoints and usage
 - [Installation Guide](docs/installation.md): Setup and deployment instructions
 - [Developer Guide](docs/developer_guide.md): Architecture and development workflow
+- [User Guide](docs/user_guide.md): End-user instructions for using the platform
+- [Content Creation Guide](docs/content_creation_guide.md): Step-by-step guide for adding units and exercises
 - [Exercise Solutions API](docs/exercise_solutions_api.md): Solution submission and checking
 - [Technical Guide: Solution Checking](docs/solution_checking_technical.md): How SQL solutions are validated
 

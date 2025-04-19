@@ -2,6 +2,13 @@
 
 This guide provides instructions on how to use the SQL Learning Platform effectively to learn and practice SQL skills.
 
+## Related Documentation
+
+- [API Overview](api_overview.md): Summary of the platform's API endpoints
+- [Installation Guide](installation.md): Setting up the platform
+- [Exercise Solutions API](exercise_solutions_api.md): Technical details on solution submission
+- [Content Creation Guide](content_creation_guide.md): For administrators creating learning materials
+
 ## Table of Contents
 - [Getting Started](#getting-started)
 - [Account Management](#account-management)
@@ -215,3 +222,15 @@ To maximize your learning experience:
 3. **Review solutions**: After completing an exercise, review the model solution
 4. **Apply knowledge**: Try writing variations of successful queries to deepen understanding
 5. **Track progress**: Regularly review your progress statistics 
+
+## For Administrators: Adding Learning Content
+
+If you are an administrator and need to add units and exercises to the platform, please refer to the [Content Creation Guide](content_creation_guide.md). This comprehensive guide provides step-by-step instructions for:
+
+- Creating learning units
+- Adding different types of SQL exercises
+- Setting up validation for exercise solutions
+- Managing existing content
+- Best practices for creating effective learning materials
+
+The guide is designed to be accessible for users without technical expertise 

@@ -2,6 +2,13 @@
 
 This guide provides information for developers working on the SQL Learning Platform, covering architecture, code organization, workflow, and best practices.
 
+## Related Documentation
+
+- [API Overview](api_overview.md): High-level summary of all API endpoints
+- [Installation Guide](installation.md): Setup and deployment instructions
+- [Solution Checking Technical Guide](solution_checking_technical.md): How SQL solutions are validated
+- [Exercise Solutions API](exercise_solutions_api.md): API for exercise solution submission
+
 ## Architecture Overview
 
 The SQL Learning Platform follows Clean Architecture principles with the following layers:

@@ -2,6 +2,12 @@
 
 This document provides technical details on how the SQL Learning Platform validates user-submitted SQL queries against expected solutions.
 
+## Related Documentation
+
+- [Exercise Solutions API](exercise_solutions_api.md): API for submitting and managing solutions
+- [Developer Guide](developer_guide.md): Architecture and development workflow
+- [API Overview](api_overview.md): Summary of all API endpoints
+
 ## Overview
 
 The SQL solution checking system is designed to:

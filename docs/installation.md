@@ -2,6 +2,12 @@
 
 This guide provides detailed instructions for setting up the SQL Learning Platform in both development and production environments.
 
+## Related Documentation
+
+- [Developer Guide](developer_guide.md): Architecture and development workflow
+- [API Overview](api_overview.md): Summary of API endpoints
+- [User Guide](user_guide.md): End-user instructions
+
 ## Development Environment Setup
 
 ### Prerequisites
@@ -227,4 +233,4 @@ When updating the application:
 2. Rotate JWT signing keys periodically
 3. Set secure password policies
 4. Implement rate limiting for API endpoints
-5. Keep dependencies updated with security patches 
+5. Keep dependencies updated with security patches
