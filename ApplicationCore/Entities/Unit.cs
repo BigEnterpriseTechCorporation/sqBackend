@@ -1,17 +1,47 @@
 namespace ApplicationCore.Entities;
 
-public class Unit
+/// <summary>
+/// Entity representing a collection of exercises
+/// </summary>
+public class Unit : BaseEntity
 {
-    public Guid Id { get; set; }
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // create time
-    public DateTime? UpdatedAt { get; set; } // last time of update
-    public bool IsActive { get; set; } = true; // soft deletion marker
-    
+    /// <summary>
+    /// Title of the unit
+    /// </summary>
     public string Title { get; set; } = string.Empty;
+    
+    /// <summary>
+    /// Description of the unit
+    /// </summary>
     public string Description { get; set; } = string.Empty;
     
-    public Guid OwnerId { get; set; }
-    public User Owner { get; set; }
+    /// <summary>
+    /// Whether the unit is active
+    /// </summary>
+    public bool IsActive { get; set; } = true;
     
+    /// <summary>
+    /// Number of likes this unit has received
+    /// </summary>
+    public int LikesCount { get; set; }
+    
+    /// <summary>
+    /// ID of the user who owns the unit
+    /// </summary>
+    public Guid OwnerId { get; set; }
+    
+    /// <summary>
+    /// Navigation property to the owner
+    /// </summary>
+    public User? Owner { get; set; }
+    
+    /// <summary>
+    /// Navigation property to the exercises in this unit
+    /// </summary>
     public List<Exercise>? Exercises { get; set; } = [];
+    
+    /// <summary>
+    /// Navigation property to the likes on this unit
+    /// </summary>
+    public List<UnitLike>? Likes { get; set; } = [];
 }

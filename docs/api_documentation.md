@@ -1015,4 +1015,208 @@ Returns system-wide statistics. Requires admin authorization.
     "UltraHard": 8
   }
 }
+```
+
+## Resource: Exercise Solutions
+
+Exercise Solutions represent user submissions to exercises and track progress.
+
+### Endpoints
+
+#### Submit Solution
+
+```
+POST /api/ExerciseSolutions/{exerciseId}
+```
+
+Submit a solution for an exercise and verify if it's correct. Requires authentication.
+
+**Parameters**
+- `exerciseId` (path, guid, required): The ID of the exercise to solve
+
+**Request Body**
+- Content-Type: application/json
+
+```json
+{
+  "query": "SELECT * FROM users WHERE age > 18"
+}
+```
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "isCorrect": true,
+  "attemptCount": 2,
+  "exerciseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "feedback": null
+}
+```
+
+#### Get User Statistics
+
+```
+GET /api/ExerciseSolutions/stats
+```
+
+Get statistics about the current user's progress. Requires authentication.
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "username": "johndoe",
+  "totalExercises": 50,
+  "solvedExercises": 25,
+  "totalAttempts": 75,
+  "likedUnits": 10,
+  "completionPercentage": 50.0
+}
+```
+
+#### Get Solved Exercises
+
+```
+GET /api/ExerciseSolutions/solved
+```
+
+Get a list of exercises the current user has solved correctly. Requires authentication.
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "createdAt": "2023-01-01T12:00:00Z",
+    "updatedAt": "2023-01-02T12:00:00Z",
+    "unitId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "unitTitle": "SQL Basics",
+    "title": "Simple SELECT Query",
+    "description": "Write a query to select all users",
+    "difficulty": 0,
+    "type": 3,
+    "schema": "CREATE TABLE users (id INT, name TEXT, age INT);",
+    "checkType": 0,
+    "checkQueryInsert": "INSERT INTO users VALUES (1, 'John', 25), (2, 'Jane', 30);",
+    "checkQuerySelect": "SELECT * FROM users;",
+    "options": "",
+    "queryParts": ""
+  },
+  ...
+]
+```
+
+#### Get Unsolved Exercises
+
+```
+GET /api/ExerciseSolutions/unsolved
+```
+
+Get a list of exercises the current user has not yet solved correctly. Requires authentication.
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+[
+  // Same format as solved exercises
+]
+```
+
+## Resource: Unit Likes
+
+Unit Likes represent user preferences for units.
+
+### Endpoints
+
+#### Toggle Like for a Unit
+
+```
+POST /api/units/{unitId}/likes
+```
+
+Like or unlike a unit (toggles the current state). Requires authentication.
+
+**Parameters**
+- `unitId` (path, guid, required): The ID of the unit to like/unlike
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "isLiked": true,
+  "likesCount": 42
+}
+```
+
+#### Get Like Status for a Unit
+
+```
+GET /api/units/{unitId}/likes
+```
+
+Check if the current user has liked a specific unit. Requires authentication.
+
+**Parameters**
+- `unitId` (path, guid, required): The ID of the unit to check
+
+**Response**
+- Status: 200 OK
+- Content-Type: application/json
+
+```json
+{
+  "isLiked": true,
+  "likesCount": 42
+}
+```
+
+## Data Models
+
+### Solution Result
+
+```json
+{
+  "isCorrect": true,              // Whether the solution is correct
+  "attemptCount": 2,              // Number of attempts made on this exercise
+  "exerciseId": "guid",           // ID of the exercise
+  "userId": "guid",               // ID of the user
+  "feedback": "string or null"    // Optional feedback message
+}
+```
+
+### User Exercise Stats
+
+```json
+{
+  "userId": "guid",               // User ID
+  "username": "string",           // Username
+  "totalExercises": 50,           // Total number of exercises in the system
+  "solvedExercises": 25,          // Number of exercises solved by the user
+  "totalAttempts": 75,            // Total number of attempts made by the user
+  "likedUnits": 10,               // Number of units liked by the user
+  "completionPercentage": 50.0    // Percentage of exercises completed
+}
+```
+
+### Like Result
+
+```json
+{
+  "isLiked": true,                // Whether the user has liked the unit
+  "likesCount": 42                // Total number of likes for the unit
+}
 ``` 

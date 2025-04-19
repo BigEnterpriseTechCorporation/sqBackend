@@ -92,7 +92,7 @@ public class ExercisesController : ControllerBase
     ///        "description": "Write a query to select all customers",
     ///        "type": "SimpleQuery",
     ///        "difficulty": "Easy",
-    ///        "schema": "CREATE TABLE Customers (ID int, Name varchar(255))",
+    ///        "schema": "CREATE TABLE Customers (ID int, Name varchar(255))", # and insert sample values
     ///        "checkType": "Compare",
     ///        "solutionQuery": "SELECT * FROM Customers"
     ///     }

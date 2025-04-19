@@ -21,16 +21,22 @@ public static class ServiceExtensions
         //services.AddDbContext<AppDbContext>(options =>
          //   options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         
+        // Generic Repository
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        
         // Repositories
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUnitRepository, UnitRepository>();
         services.AddScoped<IExerciseRepository, ExerciseRepository>();
+        services.AddScoped<IUserSolutionRepository, UserSolutionRepository>();
+        services.AddScoped<IUnitLikeRepository, UnitLikeRepository>();
         
         // Services
         services.AddTransient<IUserService, UserService>();
         services.AddTransient<ITokenService, TokenService>();
         services.AddTransient<IUnitService, UnitService>();
         services.AddTransient<IExerciseService, ExerciseService>();
+        services.AddTransient<ISqlExecutionService, SqlExecutionService>();
         
         // External services
         //services.AddScoped<IEmailService, SendGridEmailService>();
