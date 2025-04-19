@@ -75,8 +75,8 @@ public class UpdateExerciseRequest
     [Required]
     public ExerciseType Type { get; set; }
     
-    [Required]
-    [MinLength(1, ErrorMessage = "Schema cannot be empty")]
+    //[Required]
+    //[MinLength(1, ErrorMessage = "Schema cannot be empty")]
     public string Schema { get; set; } = string.Empty;
     
     public CheckType CheckType { get; set; }
