@@ -224,14 +224,24 @@ public class ExerciseService : IExerciseService
         }
         
         var totalExercises = await _exerciseRepository.GetAllAsync();
-        var solvedCount = await _userSolutionRepository.GetCorrectSolutionsByUserAsync(userId);
+        var solvedSolutions = await _userSolutionRepository.GetCorrectSolutionsByUserAsync(userId);
+        var uniqueSolvedExercisesCount = solvedSolutions.Select(s => s.ExerciseId).Distinct().Count();
+        
+        // Update user's SolvedExercisesCount if it doesn't match the actual count
+        if (user.SolvedExercisesCount != uniqueSolvedExercisesCount)
+        {
+            user.SolvedExercisesCount = uniqueSolvedExercisesCount;
+            await _userRepository.UpdateAsync(user);
+            Log.Information("Updated SolvedExercisesCount for user {UserId} from {OldCount} to {NewCount}",
+                userId, user.SolvedExercisesCount, uniqueSolvedExercisesCount);
+        }
         
         return new UserExerciseStatsDto
         {
             UserId = userId,
             Username = user.UserName ?? string.Empty,
             TotalExercises = totalExercises.Count,
-            SolvedExercises = user.SolvedExercisesCount,
+            SolvedExercises = uniqueSolvedExercisesCount,
             TotalAttempts = user.TotalAttemptsCount,
             LikedUnits = user.LikedUnitsCount
         };
